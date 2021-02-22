@@ -12,7 +12,7 @@ h1, h2, form, .tagline {
     text-align: center;
 }
 
-h2, .tagline {
+h2, .tagline, .user {
     color: white;
 }
 
@@ -29,7 +29,7 @@ input {
 }
 
 body {
-    background: url('../../images/berlin.jpg') no-repeat center center fixed; 
+    background: url('../../images/beerbackground.jpg') no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
