@@ -1,19 +1,24 @@
 a:link    { 
     text-decoration: none;
-    color: black;
+    color: white;
 }
 a:visited { text-decoration: none; 
-    color: black
+    color: white;
 }
 a:hover   { color: red }
 a:active  { color: red  }
 
-h1, h2, form {
+h1, h2, form, .tagline {
     text-align: center;
+}
+
+h2, .tagline {
+    color: white;
 }
 
 form {
     border: 1px solid green;
+    background: white;
     border-radius: 15px;
     padding: 5px;
     margin-left: 20%;
@@ -21,4 +26,12 @@ form {
 
 input {
     margin-bottom: 10px;
+}
+
+body {
+    background: url('../../images/berlin.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
