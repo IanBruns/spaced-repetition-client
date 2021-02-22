@@ -17,7 +17,7 @@ class RegistrationRoute extends Component {
     return (
       <section>
         <p className='tagline'>
-          Practice learning a language with the spaced reptition revision technique.
+          Learn just enough German to snag a cold one using a spaced reptition revision technique.
         </p>
         <h2>Sign up</h2>
         <RegistrationForm

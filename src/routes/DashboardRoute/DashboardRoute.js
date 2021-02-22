@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 class DashboardRoute extends Component {
+  componentDidMount() {
+
+  }
+
   render() {
     return (
       <section>
