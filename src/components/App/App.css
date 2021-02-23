@@ -8,11 +8,11 @@ a:visited { text-decoration: none;
 a:hover   { color: red }
 a:active  { color: red  }
 
-h1, h2, form, .tagline {
+h1, h2, h3, form, .tagline {
     text-align: center;
 }
 
-h2, .tagline, .user {
+h2, h3, .tagline, .user {
     color: white;
 }
 
