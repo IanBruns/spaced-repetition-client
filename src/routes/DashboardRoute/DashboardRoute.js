@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import './DashboardRoute.css';
 import WordBox from '../../components/WordBox/WordBox';
 import LangApiService from '../../services/lang-api-service';
 
@@ -47,9 +48,12 @@ class DashboardRoute extends Component {
         </Link>
 
         <h3>Words to practice</h3>
-        <ul>
+
+        <ul className='container'>
           {wordsToLearn}
         </ul>
+
+
       </section>
     );
   }
