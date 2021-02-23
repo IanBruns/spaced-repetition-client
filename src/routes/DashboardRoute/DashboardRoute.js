@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+import WordBox from '../../components/WordBox/WordBox';
 import LangApiService from '../../services/lang-api-service';
 
 class DashboardRoute extends Component {
@@ -22,6 +23,13 @@ class DashboardRoute extends Component {
   }
 
   render() {
+    const wordsToLearn = this.state.words.map((word) => {
+      return <WordBox key={word.id}
+        original={word.original}
+        correct_count={word.correct_count}
+        incorrect_count={word.incorrect_count} />
+    })
+
     return (
       <section className='a'>
         <h2>Dashboard</h2>
@@ -34,6 +42,7 @@ class DashboardRoute extends Component {
         </Link>
 
         <h3>Words to practice</h3>
+        {wordsToLearn}
       </section>
     );
   }
