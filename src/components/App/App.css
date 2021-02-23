@@ -17,15 +17,23 @@ h2, h3, .tagline, .user {
 }
 
 form {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+form, .WordBox {
     border: 1px solid green;
     background: white;
     border-radius: 15px;
     padding: 5px;
-    margin-left: 20%;
-    margin-right: 20%;}
+}
 
 input {
     margin-bottom: 10px;
+}
+
+li {
+    list-style: none;
 }
 
 body {
