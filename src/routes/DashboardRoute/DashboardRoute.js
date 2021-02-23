@@ -24,14 +24,19 @@ class DashboardRoute extends Component {
 
   render() {
     const wordsToLearn = this.state.words.map((word) => {
-      return <WordBox key={word.id}
-        original={word.original}
-        correct_count={word.correct_count}
-        incorrect_count={word.incorrect_count} />
+      return (
+        <li key={word.id}>
+          <WordBox
+            original={word.original}
+            correct_count={word.correct_count}
+            incorrect_count={word.incorrect_count} />
+        </li>
+      )
+
     })
 
     return (
-      <section className='a'>
+      <section>
         <h2>Dashboard</h2>
         <h2>{`Language: ${this.state.language}`}</h2>
         <p>{`Total correct answers: ${this.state.totalCorrect}`}</p>
@@ -42,7 +47,9 @@ class DashboardRoute extends Component {
         </Link>
 
         <h3>Words to practice</h3>
-        {wordsToLearn}
+        <ul>
+          {wordsToLearn}
+        </ul>
       </section>
     );
   }
