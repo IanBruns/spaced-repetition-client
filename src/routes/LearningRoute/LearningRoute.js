@@ -9,6 +9,8 @@ class LearningRoute extends Component {
     totalScore: 0,
     wordCorrectCount: 0,
     wordIncorrectCount: 0,
+    guessAnswered: false,
+    isCorrect: false,
   }
 
   handleformSubmit(e) {
@@ -43,9 +45,17 @@ class LearningRoute extends Component {
         <span>
           {this.state.nextWord}
         </span>
-        <p>
-          Your total score is: {this.state.totalScore}
-        </p>
+        <div className='scoreboard'>
+          <p>
+            Your total score is: {this.state.totalScore}
+          </p>
+          <p>
+            You have answered this word correctly {this.state.wordCorrectCount} times.
+          </p>
+          <p>
+            You have answered this word incorrectly {this.state.wordIncorrectCount} times.
+          </p>
+        </div>
         <form
           className='learningForm'
           onSubmit={e => this.handleformSubmit(e)}>
@@ -64,14 +74,13 @@ class LearningRoute extends Component {
             Submit your answer
           </Button>
         </form>
-        <div>
+
+        <div className='DisplayScore'>
           <p>
-            You have answered this word correctly {this.state.wordCorrectCount} times.
-          </p>
-          <p>
-            You have answered this word incorrectly {this.state.wordIncorrectCount} times.
+            Your total score is: {this.state.totalScore}
           </p>
         </div>
+
       </section>
     );
   }
