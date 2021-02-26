@@ -11,7 +11,9 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute'
 import './App.css'
 
 export default class App extends Component {
-  state = { hasError: false }
+  state = {
+    hasError: false,
+  }
 
   static getDerivedStateFromError(error) {
     console.error(error)
@@ -35,7 +37,7 @@ export default class App extends Component {
             />
             <PrivateRoute
               path={'/learn'}
-              component={LearningRoute}
+              component={(props) => <LearningRoute {...props} />}
             />
             <PublicOnlyRoute
               path={'/register'}
