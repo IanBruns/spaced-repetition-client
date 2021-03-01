@@ -14,7 +14,6 @@ class DashboardRoute extends Component {
   componentDidMount() {
     LangApiService.getAllWords()
       .then(res => {
-        console.log(res);
         this.setState({
           words: res.words,
           language: res.language.name,

@@ -11,19 +11,77 @@ class LearningRoute extends Component {
     wordIncorrectCount: 0,
     guessAnswered: false,
     isCorrect: false,
+    guess: '',
+    answer: '',
+    nextButtonWord: '',
+    nextWordCorrectCount: 0,
+    nextWordIncorrectCount: 0,
   }
 
   handleformSubmit(e) {
     e.preventDefault();
     const { guess } = e.target;
-
-    LangApiService.postGuess(guess.value)
+    LangApiService.postGuess(guess.value.toLowerCase())
       .then(res => {
+        this.setState({
+          guessAnswered: true,
+          isCorrect: res.isCorrect,
+          totalScore: res.totalScore,
+          guess: guess.value,
+          answer: res.answer,
+          nextButtonWord: res.nextWord,
+          nextWordCorrectCount: res.wordCorrectCount,
+          nextWordIncorrectCount: res.wordIncorrectCount,
+        })
         console.log(res);
       })
       .catch(err => {
         console.log(err);
       })
+  }
+
+  handleNextClicked() {
+    this.setState({
+      nextWord: this.state.nextButtonWord,
+      wordCorrectCount: this.state.nextWordCorrectCount,
+      wordIncorrectCount: this.state.nextWordIncorrectCount,
+      guessAnswered: false,
+    })
+  }
+
+  generateTranslationResponse() {
+    return (
+      <>
+        <p>
+          The correct translation for {this.state.nextWord} was {this.state.answer} and you chose {this.state.guess}!
+        </p>
+        <button onClick={() => this.handleNextClicked()}>
+          Try another word!
+        </button>
+      </>
+    )
+  }
+
+  generateIncorrectAnswer() {
+    let res = this.generateTranslationResponse();
+
+    return (
+      <>
+        <h2>Good try, but not quite right :(</h2>
+        {res}
+      </>
+    );
+  }
+
+  generateCorrectAnswer() {
+    let res = this.generateTranslationResponse();
+
+    return (
+      <>
+        <h2>You were correct! :D</h2>
+        {res}
+      </>
+    );
   }
 
   componentDidMount() {
@@ -39,16 +97,28 @@ class LearningRoute extends Component {
   }
 
   render() {
+    let response;
+
+    this.state.isCorrect
+      ? response = this.generateCorrectAnswer()
+      : response = this.generateIncorrectAnswer();
+
     return (
       <section>
-        <h2>Translate the word:</h2>
-        <span>
-          {this.state.nextWord}
-        </span>
-        <div className='scoreboard'>
+        {(!this.state.guessAnswered &&
+          <>
+            <h2>Translate the word:</h2>
+            <span>
+              {this.state.nextWord}
+            </span>
+          </>)}
+
+        <div className='DisplayScore'>
           <p>
             Your total score is: {this.state.totalScore}
           </p>
+        </div>
+        <div className='scoreboard'>
           <p>
             You have answered this word correctly {this.state.wordCorrectCount} times.
           </p>
@@ -56,30 +126,31 @@ class LearningRoute extends Component {
             You have answered this word incorrectly {this.state.wordIncorrectCount} times.
           </p>
         </div>
-        <form
-          className='learningForm'
-          onSubmit={e => this.handleformSubmit(e)}>
-          <div>
-            <Label htmlFor='learn-guess-input'>
-              What's the translation for this word?
-            </Label>
-            <br />
-            <Input
-              type='text'
-              id='learn-guess-input'
-              name='guess'
-              required />
-          </div>
-          <Button type='submit'>
-            Submit your answer
-          </Button>
-        </form>
 
-        <div className='DisplayScore'>
-          <p>
-            Your total score is: {this.state.totalScore}
-          </p>
-        </div>
+        {!this.state.guessAnswered &&
+          (<form
+            className='learningForm'
+            onSubmit={e => this.handleformSubmit(e)}>
+            <div>
+              <Label htmlFor='learn-guess-input'>
+                What's the translation for this word?
+            </Label>
+              <br />
+              <Input
+                type='text'
+                id='learn-guess-input'
+                name='guess'
+                required />
+            </div>
+            <Button type='submit'>
+              Submit your answer
+          </Button>
+          </form>)}
+
+        {(this.state.guessAnswered &&
+          <div className='DisplayFeedback'>
+            {response}
+          </div>)}
 
       </section>
     );
