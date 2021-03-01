@@ -105,27 +105,24 @@ class LearningRoute extends Component {
 
     return (
       <section>
+        <div className='DisplayScore'>
+          <p>
+            Your total score is: {this.state.totalScore}
+          </p>
+        </div>
         {(!this.state.guessAnswered &&
           <div className='question'>
             <h2>Translate the word:</h2>
             <span text-align="center">
               {this.state.nextWord}
             </span>
+            <p>
+              You have answered this word correctly {this.state.wordCorrectCount} times.
+              </p>
+            <p>
+              You have answered this word incorrectly {this.state.wordIncorrectCount} times.
+              </p>
           </div>)}
-
-        <div className='DisplayScore'>
-          <p>
-            Your total score is: {this.state.totalScore}
-          </p>
-        </div>
-        <div className='scoreboard'>
-          <p>
-            You have answered this word correctly {this.state.wordCorrectCount} times.
-          </p>
-          <p>
-            You have answered this word incorrectly {this.state.wordIncorrectCount} times.
-          </p>
-        </div>
 
         {!this.state.guessAnswered &&
           (<form
