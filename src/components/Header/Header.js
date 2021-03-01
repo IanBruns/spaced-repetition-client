@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import cheers from '../../images/cheers.png'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import './Header.css'
@@ -45,11 +44,9 @@ class Header extends Component {
     return (
       <header>
         <h1>
-          <img src={cheers} alt='' height='50' />
           <Link to='/'>
-            Survive Oktoberfest
+            Spaced repetition
           </Link>
-          <img src={cheers} alt='' height='50' />
         </h1>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
