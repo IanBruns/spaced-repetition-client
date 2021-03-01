@@ -44,3 +44,13 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+button {
+    padding: 10px 0px;
+    width: 35%;
+    border: 1px solid green;
+    border-radius: 5px;
+    -webkit-box-shadow: 3px 2px 15px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 3px 2px 15px 1px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+}
