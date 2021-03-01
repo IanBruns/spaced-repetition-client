@@ -22,7 +22,7 @@ form {
     margin-right: 20%;
 }
 
-form, .WordBox, .DisplayScore, .scoreboard, .question {
+form, .WordBox, .DisplayScore, .scoreboard, .question, .dashHeader {
     border: 1px solid green;
     background: white;
     border-radius: 15px;

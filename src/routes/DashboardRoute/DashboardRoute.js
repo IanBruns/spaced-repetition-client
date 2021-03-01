@@ -39,12 +39,15 @@ class DashboardRoute extends Component {
       <section>
         <h2>Dashboard</h2>
         <h2>{`Language: ${this.state.language}`}</h2>
-        <p>{`Total correct answers: ${this.state.totalCorrect}`}</p>
-        <Link to='/learn'>
-          <button>
-            Start practicing
-          </button>
-        </Link>
+
+        <div className='dashHeader'>
+          <p>{`Total correct answers: ${this.state.totalCorrect}`}</p>
+          <Link to='/learn'>
+            <button>
+              Start practicing
+            </button>
+          </Link>
+        </div>
 
         <h3>Words to practice</h3>
 
