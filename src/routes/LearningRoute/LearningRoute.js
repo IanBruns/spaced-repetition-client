@@ -95,7 +95,7 @@ class LearningRoute extends Component {
           <>
             <div className='question'>
               <h2>Translate the word:</h2>
-              <span text-align="center">
+              <span>
                 {this.state.nextWord}
               </span>
               <p>

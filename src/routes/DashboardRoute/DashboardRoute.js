@@ -32,7 +32,6 @@ class DashboardRoute extends Component {
             incorrect_count={word.incorrect_count} />
         </li>
       )
-
     })
 
     return (
