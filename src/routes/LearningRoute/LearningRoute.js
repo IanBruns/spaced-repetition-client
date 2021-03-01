@@ -49,9 +49,16 @@ class LearningRoute extends Component {
     })
   }
 
-  generateTranslationResponse() {
+  generateResponse() {
+    let res = '';
+
+    this.state.isCorrect
+      ? res = 'You were correct! :D'
+      : res = 'Good try, but not quite right :(';
+
     return (
       <>
+        <h2>{res}</h2>
         <p>
           The correct translation for {this.state.nextWord} was {this.state.answer} and you chose {this.state.guess}!
         </p>
@@ -60,28 +67,6 @@ class LearningRoute extends Component {
         </button>
       </>
     )
-  }
-
-  generateIncorrectAnswer() {
-    let res = this.generateTranslationResponse();
-
-    return (
-      <>
-        <h2>Good try, but not quite right :(</h2>
-        {res}
-      </>
-    );
-  }
-
-  generateCorrectAnswer() {
-    let res = this.generateTranslationResponse();
-
-    return (
-      <>
-        <h2>You were correct! :D</h2>
-        {res}
-      </>
-    );
   }
 
   componentDidMount() {
@@ -97,11 +82,7 @@ class LearningRoute extends Component {
   }
 
   render() {
-    let response;
-
-    this.state.isCorrect
-      ? response = this.generateCorrectAnswer()
-      : response = this.generateIncorrectAnswer();
+    let response = this.generateResponse();
 
     return (
       <section>
