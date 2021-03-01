@@ -111,38 +111,39 @@ class LearningRoute extends Component {
           </p>
         </div>
         {(!this.state.guessAnswered &&
-          <div className='question'>
-            <h2>Translate the word:</h2>
-            <span text-align="center">
-              {this.state.nextWord}
-            </span>
-            <p>
-              You have answered this word correctly {this.state.wordCorrectCount} times.
+          <>
+            <div className='question'>
+              <h2>Translate the word:</h2>
+              <span text-align="center">
+                {this.state.nextWord}
+              </span>
+              <p>
+                You have answered this word correctly {this.state.wordCorrectCount} times.
               </p>
-            <p>
-              You have answered this word incorrectly {this.state.wordIncorrectCount} times.
+              <p>
+                You have answered this word incorrectly {this.state.wordIncorrectCount} times.
               </p>
-          </div>)}
-
-        {!this.state.guessAnswered &&
-          (<form
-            className='learningForm'
-            onSubmit={e => this.handleformSubmit(e)}>
-            <div>
-              <Label htmlFor='learn-guess-input'>
-                What's the translation for this word?
-            </Label>
-              <br />
-              <Input
-                type='text'
-                id='learn-guess-input'
-                name='guess'
-                required />
             </div>
-            <Button type='submit'>
-              Submit your answer
-          </Button>
-          </form>)}
+
+            <form
+              className='learningForm'
+              onSubmit={e => this.handleformSubmit(e)}>
+              <div>
+                <Label htmlFor='learn-guess-input'>
+                  What's the translation for this word?
+                </Label>
+                <br />
+                <Input
+                  type='text'
+                  id='learn-guess-input'
+                  name='guess'
+                  required />
+              </div>
+              <Button type='submit'>
+                Submit your answer
+              </Button>
+            </form>
+          </>)}
 
         {(this.state.guessAnswered &&
           <div className='DisplayFeedback'>

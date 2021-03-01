@@ -51,8 +51,6 @@ class DashboardRoute extends Component {
         <ul className='container'>
           {wordsToLearn}
         </ul>
-
-
       </section>
     );
   }
