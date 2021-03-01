@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Input, Label } from '../../components/Form/Form'
 import Button from '../../components/Button/Button'
-import LangApiService from '../../services/lang-api-service';
+import LangApiService from '../../services/lang-api-service'
+import './LearningRoute.css'
 
 class LearningRoute extends Component {
   state = {
@@ -33,7 +34,6 @@ class LearningRoute extends Component {
           nextWordCorrectCount: res.wordCorrectCount,
           nextWordIncorrectCount: res.wordIncorrectCount,
         })
-        console.log(res);
       })
       .catch(err => {
         console.log(err);
@@ -106,12 +106,12 @@ class LearningRoute extends Component {
     return (
       <section>
         {(!this.state.guessAnswered &&
-          <>
+          <div className='question'>
             <h2>Translate the word:</h2>
-            <span>
+            <span text-align="center">
               {this.state.nextWord}
             </span>
-          </>)}
+          </div>)}
 
         <div className='DisplayScore'>
           <p>
