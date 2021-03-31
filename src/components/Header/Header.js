@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import './Header.css'
+import cheers from '../../images/cheers.png'
 
 class Header extends Component {
   static contextType = UserContext
@@ -43,11 +44,15 @@ class Header extends Component {
   render() {
     return (
       <header>
-        <h1>
-          <Link to='/'>
-            Survive Oktoberfest
+        <div className='name'>
+          <img src={cheers} alt='' height='80px' />
+          <h1>
+            <Link to='/'>
+              Survive Oktoberfest
           </Link>
-        </h1>
+          </h1>
+          <img src={cheers} alt='' height='80px' />
+        </div>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
